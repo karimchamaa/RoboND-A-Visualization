@@ -3,7 +3,7 @@
 #include <vector>
 #include <iterator>
 #include <fstream>
-#include "src/matplotlibcpp.h" //Graph Library
+#include "../lib/matplotlibcpp.h" //Graph Library
 
 using namespace std;
 namespace plt = matplotlibcpp;
@@ -23,7 +23,7 @@ private:
     {
         vector<vector<double> > mymap(mapHeight, vector<double>(mapWidth));
         ifstream myReadFile;
-        myReadFile.open("map.txt");
+        myReadFile.open("../doc/map.txt");
 
         while (!myReadFile.eof()) {
             for (int i = 0; i < mapHeight; i++) {
@@ -249,7 +249,7 @@ void visualization(Map map, Planner planner)
     }
 
     //Save the image and close the plot
-    plt::save("./Images/Path.png");
+    plt::save("../images/path.png");
     plt::clf();
 }
 
@@ -258,9 +258,9 @@ int main()
     // Instantiate a planner and map objects
     Map map;
     Planner planner;
-    // Generate the shortest Path using the Astar algorithm
+    // Generate the shortest path using the Astar algorithm
     planner = search(map, planner);
-    // Plot the Map and the path generated
+    // Plot the map and the path generated
     visualization(map, planner);
 
     return 0;
